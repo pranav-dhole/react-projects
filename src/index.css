@@ -10,8 +10,3 @@ body {
   flex-direction: column;
   box-sizing: border-box;
 }
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-}
