@@ -1,3 +1,4 @@
+import "./submissionForm.css";
 import { useState } from "react";
 
 const SubmissionForm = () => {
@@ -7,19 +8,38 @@ const SubmissionForm = () => {
   const [contact, setContact] = useState("");
   const [url, setUrl] = useState("");
   const [about, setAbout] = useState("");
-  const [gender, setGender] = useState({
-    male: "male",
-    female: "female",
-    other: "other",
-  });
-  const [subject, setSubject] = useState({
-    english: "english",
-    maths: "maths",
-    physics: "physics",
-  });
+  const [choice, setChoice] = useState("");
+  const [gender, setGender] = useState("");
+  const [subject, setSubject] = useState("");
+
+  const handleSubmit = () => {
+    console.log(`
+      firstName : ${firstName},
+      lastName : ${lastName},
+      email : ${email},
+      contact : ${contact},
+      url : ${url || "N/A"},
+      about : ${about || "N/A"},
+      choice : ${choice},
+      gender : ${gender || "N/A"}
+      subject : ${subject || "N/A"}
+      `);
+  };
+
+  const handleReset = () => {
+    setAbout("");
+    setChoice("");
+    setContact("");
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+    setGender("");
+    setSubject("");
+    setUrl("");
+  };
 
   return (
-    <div className="form-container">
+    <form onSubmit={(e) => e.preventDefault()} className="form-container">
       <h1>Form In React</h1>
       <div className="form-one">
         <label htmlFor="firstName">First Name*</label>
@@ -29,6 +49,7 @@ const SubmissionForm = () => {
           placeholder="Enter First Name"
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
+          required
         />
       </div>
       <div className="form-one">
@@ -39,6 +60,7 @@ const SubmissionForm = () => {
           placeholder="Enter Last Name"
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
+          required
         />
       </div>
       <div className="form-one">
@@ -49,6 +71,7 @@ const SubmissionForm = () => {
           placeholder="Enter email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+          required
         />
       </div>
       <div className="form-one">
@@ -59,35 +82,105 @@ const SubmissionForm = () => {
           placeholder="Enter Mobile Number"
           onChange={(e) => setContact(e.target.value)}
           value={contact}
+          required
         />
       </div>
 
       {/* gender */}
-      <fieldset>
+      <fieldset className="form-two">
         <legend>Gender*</legend>
 
-        <input type="radio" id="male" name="gender" value="male" />
-        <label htmlFor="male">Male</label>
+        <div className="form-two-inside">
+          <div>
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              checked={gender === "male"}
+              value="male"
+              onChange={(e) => setGender(e.target.value)}
+            />
+            <label htmlFor="male">Male</label>
+          </div>
 
-        <input type="radio" id="female" name="gender" value="female" />
-        <label htmlFor="female">Female</label>
+          <div>
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+              checked={gender === "female"}
+              onChange={(e) => setGender(e.target.value)}
+            />
+            <label htmlFor="female">Female</label>
+          </div>
 
-        <input type="radio" id="other" name="gender" value="other" />
-        <label htmlFor="other">Other</label>
+          <div>
+            <input
+              type="radio"
+              id="other"
+              name="gender"
+              value="other"
+              checked={gender === "other"}
+              onChange={(e) => setGender(e.target.value)}
+            />
+            <label htmlFor="other">Other</label>
+          </div>
+        </div>
       </fieldset>
 
       {/* subject */}
-      <fieldset>
+      <fieldset className="form-two">
         <legend>Your Best Subject</legend>
 
-        <input type="checkbox" id="english" name="subject" value="english" />
-        <label htmlFor="english">English</label>
+        <div className="form-two-inside">
+          <div>
+            <input
+              type="checkbox"
+              id="english"
+              name="subject"
+              checked={subject === "english"}
+              value="english"
+              onChange={(e) =>
+                setSubject((prev) =>
+                  prev === e.target.value ? null : e.target.value,
+                )
+              }
+            />
+            <label htmlFor="english">English</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="maths"
+              name="subject"
+              checked={subject === "maths"}
+              value="maths"
+              onChange={(e) =>
+                setSubject((prev) =>
+                  prev === e.target.value ? null : e.target.value,
+                )
+              }
+            />
+            <label htmlFor="maths">Maths</label>
+          </div>
 
-        <input type="checkbox" id="maths" name="subject" value="maths" />
-        <label htmlFor="maths">Maths</label>
-
-        <input type="checkbox" id="physics" name="subject" value="physics" />
-        <label htmlFor="physics">Physics</label>
+          <div>
+            <input
+              type="checkbox"
+              id="physics"
+              name="subject"
+              checked={subject === "physics"}
+              value="physics"
+              onChange={(e) =>
+                setSubject((prev) =>
+                  prev === e.target.value ? null : e.target.value,
+                )
+              }
+            />
+            <label htmlFor="physics">Physics</label>
+          </div>
+        </div>
       </fieldset>
 
       <div className="form-one">
@@ -98,37 +191,54 @@ const SubmissionForm = () => {
           placeholder="Enter url here"
           onChange={(e) => setUrl(e.target.value)}
           value={url}
+          required
         />
       </div>
 
       {/* choice */}
-      <div>
+      <div className="form-one form-select">
         <label htmlFor="choice">Select Your Choice</label>
-        <select id="choice">
-          <option>Beginners</option>
-          <option>Advanced</option>
+        <select
+          id="choice"
+          value={choice}
+          onChange={(e) => setChoice(e.target.value)}
+          required
+        >
+          <option value="" disabled>
+            Select an option...
+          </option>
+          <option value="Beginner">Beginners</option>
+          <option value="Advanced">Advanced</option>
         </select>
       </div>
 
-      <div>
-        <label htmlFor="about">About</label>
-        <textarea
-          placeholder="About your self"
-          id="about"
-          onChange={(e) => setAbout(e.target.value)}
-          value={about}
-        />
-      </div>
-
-      <div>
-        <legend>Submit OR Reset</legend>
-
+      <div className="form-one">
         <div>
-          <button id="reset">Reset</button>
-          <button id="submit">Submit</button>
+          <label htmlFor="about" className="about">
+            About
+          </label>
+          <textarea
+            placeholder="About your self"
+            id="about"
+            onChange={(e) => setAbout(e.target.value)}
+            value={about}
+          />
         </div>
       </div>
-    </div>
+
+      <div className="btn-container">
+        <legend>Submit OR Reset</legend>
+
+        <div className="btns">
+          <button id="reset" onClick={handleReset}>
+            Reset
+          </button>
+          <button id="submit" onClick={handleSubmit} type="submit">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
 
