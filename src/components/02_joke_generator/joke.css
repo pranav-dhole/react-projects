@@ -1,0 +1,51 @@
+body {
+  background-color: rgb(3, 90, 3);
+  /* font-family: "Cascadia Code", "Cascadia Mono"; */
+  font-family: "Ubuntu Mono";
+  box-sizing: border-box;
+}
+
+.joke-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 40px;
+}
+
+button {
+  background-color: rgb(33, 155, 33);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px rgb(204, 204, 204) solid;
+  color: white;
+  font-size: 16px;
+  transition: transform 0.1s ease-in-out;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn.process {
+  cursor: progress;
+}
+
+button:hover {
+  transform: scale(103%);
+  background-color: rgb(29, 138, 29);
+}
+
+button:active {
+  transform: scale(100%);
+}
+
+.joke {
+  font-size: 20px;
+  max-width: 1000px;
+  text-align: center;
+}
