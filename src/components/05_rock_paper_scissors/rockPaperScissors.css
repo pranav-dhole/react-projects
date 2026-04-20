@@ -1,0 +1,34 @@
+.rps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.rps-container p {
+  font-weight: bold;
+}
+
+.rps-img-container {
+  display: flex;
+  gap: 20px;
+}
+
+.rps-img-container img {
+  width: 40px;
+  height: 40px;
+}
+
+.rps-img-container button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.rps-header {
+  text-transform: uppercase;
+  color: rgb(33, 155, 33);
+}
