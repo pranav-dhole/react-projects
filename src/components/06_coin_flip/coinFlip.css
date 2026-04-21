@@ -1,0 +1,27 @@
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.coin-container h1 {
+  color: rgb(33, 155, 33);
+}
+
+.coin-img {
+  width: 200px;
+  height: 200px;
+}
+
+.coin-container p span {
+  font-weight: bold;
+  color: green;
+  text-decoration: underline;
+}
+
+.flipping {
+  cursor: not-allowed;
+}
