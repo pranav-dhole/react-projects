@@ -5,6 +5,7 @@ import DiceRoll from "./components/04_dice_roll/DiceRoll";
 import RockPaperScissors from "./components/05_rock_paper_scissors/RockPaperScissors";
 import CoinFlip from "./components/06_coin_flip/CoinFlip";
 import GuessTheNumber from "./components/07_guess_the_number/GuessTheNumber";
+import LyricsFinder from "./components/08_lyrics_finder/LyricsFinder";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* <DiceRoll /> */}
       {/* <RockPaperScissors /> */}
       {/* <CoinFlip /> */}
-      <GuessTheNumber />
+      {/* <GuessTheNumber /> */}
+      <LyricsFinder />
     </>
   );
 }
