@@ -1,0 +1,37 @@
+.lyrics-finder-container {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lyrics-search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 50px;
+}
+
+.lyrics-search-container input {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px gray solid;
+}
+
+.lyrics-search-container button {
+  margin-bottom: 0;
+}
+
+.border {
+  border: 2px black solid;
+  width: 80vw;
+}
+
+.lyrics {
+  white-space: pre-wrap;
+  text-align: center;
+  font-weight: 600;
+  font-size: x-large;
+}
