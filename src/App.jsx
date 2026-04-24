@@ -6,6 +6,7 @@ import RockPaperScissors from "./components/05_rock_paper_scissors/RockPaperScis
 import CoinFlip from "./components/06_coin_flip/CoinFlip";
 import GuessTheNumber from "./components/07_guess_the_number/GuessTheNumber";
 import LyricsFinder from "./components/08_lyrics_finder/LyricsFinder";
+import BmiCalculator from "./components/09_bmi_calculator/BmiCalculator";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       {/* <RockPaperScissors /> */}
       {/* <CoinFlip /> */}
       {/* <GuessTheNumber /> */}
-      <LyricsFinder />
+      {/* <LyricsFinder /> */}
+      <BmiCalculator />
     </>
   );
 }
