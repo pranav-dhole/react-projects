@@ -5,15 +5,22 @@ const LyricsFinder = () => {
   const [artistName, setArtistName] = useState("");
   const [songName, setSongName] = useState("");
   const [lyrics, setLyrics] = useState("");
+  const [isloading, setIsLoading] = useState(false);
 
   const fetchLyrics = async () => {
-    const res = await fetch(
-      `https://api.lyrics.ovh/v1/${artistName}/${songName}`,
-    );
-    const data = await res.json();
-    setLyrics(
-      data?.lyrics?.trim() || "No Lyrics Found For Your Song, Sorry :[",
-    );
+    try {
+      setIsLoading(true);
+      const res = await fetch(
+        `https://api.lyrics.ovh/v1/${artistName}/${songName}`,
+      );
+      const data = await res.json();
+      setLyrics(
+        data?.lyrics?.trim() || "No Lyrics Found For Your Song, Sorry :[",
+      );
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
@@ -37,7 +44,7 @@ const LyricsFinder = () => {
         <button onClick={fetchLyrics}>Search</button>
       </div>
       <p className="border"></p>
-      <p className="lyrics">{lyrics}</p>
+      <p className="lyrics">{isloading ? "Loading..." : lyrics}</p>
     </div>
   );
 };
