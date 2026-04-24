@@ -1,0 +1,44 @@
+.bmi-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  width: 100%;
+  max-width: 90vw;
+  width: 350px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: auto auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bmi-container h3 {
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.bmi-container h3 span {
+  color: rgb(13, 104, 209);
+}
+
+.bmi-container h1 {
+  color: rgb(13, 104, 209);
+}
+
+.bmi-container .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.input-box input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px gray solid;
+}
+
+.bmi-container button {
+  background-color: rgb(13, 104, 209);
+  font-weight: bold;
+}
