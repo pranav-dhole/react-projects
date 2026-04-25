@@ -1,0 +1,87 @@
+:root {
+  --primary-color: #2563eb;
+  --bg-item: #f3f4f6;
+  --bg-hover: #e5e7eb;
+  --text-main: #1f2937;
+  --border-color: #d1d5db;
+}
+
+.domain-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Better than viewport width for large screens */
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.domain-container h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: -0.025em; /* Tighter spacing for a modern look */
+  background: linear-gradient(to right, #1f2937, #4b5563);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Subtle gradient effect */
+}
+
+#domain-input {
+  padding: 12px 20px;
+  border-radius: 99px; /* Pill shape */
+  border: 2px solid var(--border-color);
+  width: 100vw;
+  max-width: 500px; /* Limits size on desktop, grows on mobile */
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#domain-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.domain-name-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.domain-name-container:empty::before {
+  content: "Start typing to see domains...";
+  color: #9ca3af;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.domain-name-container p {
+  margin: 0; /* Cleaned up margin-block */
+  padding: 10px 16px;
+  border-radius: 12px;
+  background-color: var(--bg-item);
+  color: var(--text-main);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.domain-name-container p:hover {
+  transform: translateY(-2px); /* Lift effect is usually cleaner than scale */
+  background-color: var(--bg-hover);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.domain-name-container a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block; /* Ensures the whole tag is clickable */
+}
