@@ -7,6 +7,7 @@ import CoinFlip from "./components/06_coin_flip/CoinFlip";
 import GuessTheNumber from "./components/07_guess_the_number/GuessTheNumber";
 import LyricsFinder from "./components/08_lyrics_finder/LyricsFinder";
 import BmiCalculator from "./components/09_bmi_calculator/BmiCalculator";
+import DomainNameGen from "./components/10_domain_name_generator/DomainNameGen";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       {/* <CoinFlip /> */}
       {/* <GuessTheNumber /> */}
       {/* <LyricsFinder /> */}
-      <BmiCalculator />
+      {/* <BmiCalculator /> */}
+      <DomainNameGen />
     </>
   );
 }
