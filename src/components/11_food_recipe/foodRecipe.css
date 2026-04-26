@@ -1,0 +1,21 @@
+.recipe-container {
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin-block: 12px;
+}
+
+.recipe-input-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.recipe-input-container input {
+  padding: 10px 8px;
+  border-radius: 8px;
+  border: 1px gray solid;
+}
+
+button {
+  margin: 0;
+}
