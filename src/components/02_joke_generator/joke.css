@@ -19,7 +19,7 @@ h1 {
   margin-bottom: 40px;
 }
 
-button {
+.joke-container button {
   background-color: rgb(33, 155, 33);
   padding: 10px 14px;
   border-radius: 12px;
@@ -35,7 +35,7 @@ button {
   cursor: progress;
 }
 
-button:hover {
+.joke-container button:hover {
   transform: scale(103%);
   background-color: rgb(29, 138, 29);
 }
