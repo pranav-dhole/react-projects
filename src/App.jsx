@@ -9,6 +9,7 @@ import LyricsFinder from "./components/08_lyrics_finder/LyricsFinder";
 import BmiCalculator from "./components/09_bmi_calculator/BmiCalculator";
 import DomainNameGen from "./components/10_domain_name_generator/DomainNameGen";
 import FoodRecipe from "./components/11_food_recipe/FoodRecipe";
+import VirtualKeyBoard from "./components/12_virtual_keyboard/VirtualKeyBoard";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       {/* <LyricsFinder /> */}
       {/* <BmiCalculator /> */}
       {/* <DomainNameGen /> */}
-      <FoodRecipe />
+      {/* <FoodRecipe /> */}
+      <VirtualKeyBoard />
     </>
   );
 }
