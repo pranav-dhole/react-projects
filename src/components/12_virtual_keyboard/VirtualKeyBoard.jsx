@@ -24,8 +24,7 @@ const VirtualKeyBoard = () => {
     } else if (keyvalue === "Tab") {
       let newContent = inputText + "    ";
       setInputText(newContent);
-    } else if (keyvalue === "Caps Lock") {
-      console.log("CAPS");
+    } else if (keyvalue === "Caps") {
       let updatedCaps = !isCaps;
       setIsCaps(updatedCaps);
 
@@ -38,9 +37,7 @@ const VirtualKeyBoard = () => {
           const keyText = firstSpanElement.innerText.toLowerCase();
 
           if (
-            !["shift", "ctrl", "alt", "enter", "caps lock", "tab"].includes(
-              keyText,
-            )
+            !["shift", "ctrl", "alt", "enter", "caps", "tab"].includes(keyText)
           ) {
             firstSpanElement.innerText =
               (isCaps && isShift) || (!isCaps && !isShift)
@@ -48,7 +45,7 @@ const VirtualKeyBoard = () => {
                 : keyText.toLowerCase();
           }
 
-          if (keyText === "caps lock") {
+          if (keyText === "caps") {
             firstSpanElement.parentElement.style.backgroundColor = updatedCaps
               ? "blue"
               : "black";
@@ -60,25 +57,58 @@ const VirtualKeyBoard = () => {
 
       let newContent = inputText.slice(0, inputText.length - 1);
       setInputText(newContent);
+    } else if (keyvalue === "Shift") {
+      let updatedShift = !isShift;
+      setIsShift(updatedShift);
+
+      let keys = document.querySelectorAll(".mykey");
+
+      keys.forEach((key) => {
+        let firstSpanElement = key.querySelector("span:first-child");
+        let secondSpanElement = key.querySelector("span:nth-child(2)");
+
+        if (!firstSpanElement) return;
+
+        let keyText = firstSpanElement.innerText.toLowerCase();
+
+        if (keyText === "shift") {
+          key.style.backgroundColor = updatedShift ? "blue" : "black";
+          return;
+        }
+
+        if (secondSpanElement) {
+          if (updatedShift) {
+            firstSpanElement.style.display = "none";
+            secondSpanElement.style.display = "block";
+          } else {
+            firstSpanElement.style.display = "block";
+            secondSpanElement.style.display = "none";
+          }
+        } else if (!["caps", "tab", "alt", "ctrl", "enter"].includes(keyText)) {
+          let shouldBeUpper = updatedShift !== isCaps;
+          firstSpanElement.innerText = shouldBeUpper
+            ? keyText.toUpperCase()
+            : keyText.toLowerCase();
+        }
+      });
+    } else {
+      const isLetter = keyvalue.length === 1 && /[a-z]/i.test(keyvalue);
+
+      let finalChar = keyvalue;
+
+      if (isLetter) {
+        const shouldBeUpper = isShift !== isCaps;
+        finalChar = shouldBeUpper
+          ? keyvalue.toUpperCase()
+          : keyvalue.toLowerCase();
+      } else if (keyvalue.includes(".") || keyvalue.includes("_")) {
+        const delimiter = keyvalue.includes(".") ? "." : "_";
+        const parts = keyvalue.split(delimiter);
+        finalChar = isShift ? parts[0] : parts[1];
+      }
+
+      setInputText((prev) => prev + finalChar);
     }
-
-    //
-
-    // if (key === "Enter") {
-    //   handleEnterKey();
-    // } else if (key === " ") {
-    //   handleSpaceKey();
-    // } else if (key === "Caps Lock") {
-    //   handleCapsLock();
-    // } else if (key === '<i className="fa-solid fa-delete-left"></i>') {
-    //   handleDeleteKey();
-    // } else if (key === "Shift") {
-    //   handleShiftKey();
-    // } else if (key === "Tab") {
-    //   handleTabKey();
-    // } else {
-    //   handleRegularKey(key);
-    // }
   };
 
   return (
@@ -90,22 +120,26 @@ const VirtualKeyBoard = () => {
         onChange={(e) => setInputText(e.target.value)}
       />
 
+      <h3 className="screen-warning">Only available for big screen sizes</h3>
+
       <div className="main-keyboard">
         <div className="row">
           {firstRow.map((keyvalue) => (
             <div
               key={keyvalue}
-              className="mykey"
+              className={`mykey ${keyvalue === "Backspace" ? "backspace-key" : ""}`}
               onClick={() => handleKeyClick(keyvalue)}
             >
               {keyvalue.includes(".") ? (
-                keyvalue
-                  .split(".")
-                  .map((part, index) => <span key={index}>{part}</span>)
+                <span>
+                  {isShift ? keyvalue.split(".")[0] : keyvalue.split(".")[1]}
+                </span>
               ) : keyvalue === "Backspace" ? (
                 <img src={backSpaceImg} />
               ) : (
-                <span>{keyvalue}</span>
+                <span>
+                  {isShift ? keyvalue.split(".")[0] : keyvalue.split(".")[1]}
+                </span>
               )}
             </div>
           ))}
@@ -119,9 +153,9 @@ const VirtualKeyBoard = () => {
               onClick={() => handleKeyClick(keyvalue)}
             >
               {keyvalue.includes("_") ? (
-                keyvalue
-                  .split("_")
-                  .map((part, index) => <span key={index}>{part}</span>)
+                <span>
+                  {isShift ? keyvalue.split("_")[0] : keyvalue.split("_")[1]}
+                </span>
               ) : (
                 <span>{keyvalue}</span>
               )}
@@ -132,13 +166,13 @@ const VirtualKeyBoard = () => {
           {thirdRow.map((keyvalue) => (
             <div
               key={keyvalue}
-              className="mykey"
+              className={`mykey ${keyvalue === "Enter" ? "enter-key" : ""}`}
               onClick={() => handleKeyClick(keyvalue)}
             >
               {keyvalue.includes("_") ? (
-                keyvalue
-                  .split("_")
-                  .map((part, index) => <span key={index}>{part}</span>)
+                <span>
+                  {isShift ? keyvalue.split("_")[0] : keyvalue.split("_")[1]}
+                </span>
               ) : (
                 <span>{keyvalue}</span>
               )}
@@ -146,16 +180,16 @@ const VirtualKeyBoard = () => {
           ))}
         </div>
         <div className="row">
-          {fourthRow.map((keyvalue) => (
+          {fourthRow.map((keyvalue, i) => (
             <div
-              key={keyvalue}
-              className="mykey"
+              key={keyvalue + i}
+              className={`mykey ${keyvalue === "Shift" ? "shift-key" : ""}`}
               onClick={() => handleKeyClick(keyvalue)}
             >
               {keyvalue.includes("_") ? (
-                keyvalue
-                  .split("_")
-                  .map((part, index) => <span key={index}>{part}</span>)
+                <span>
+                  {isShift ? keyvalue.split("_")[0] : keyvalue.split("_")[1]}
+                </span>
               ) : (
                 <span>{keyvalue}</span>
               )}
@@ -163,10 +197,10 @@ const VirtualKeyBoard = () => {
           ))}
         </div>
         <div className="row">
-          {fifthRow.map((keyvalue) => (
+          {fifthRow.map((keyvalue, i) => (
             <div
-              key={keyvalue}
-              className="mykey"
+              key={keyvalue + i}
+              className={`mykey ${keyvalue === " " ? "space-key" : ""}`}
               onClick={() => handleKeyClick(keyvalue)}
             >
               {<span>{keyvalue}</span>}
