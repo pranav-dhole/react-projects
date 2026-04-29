@@ -33,7 +33,7 @@ export const secondRow = [
 ];
 
 export const thirdRow = [
-  "Caps Lock",
+  "Caps",
   "a",
   "s",
   "d",
