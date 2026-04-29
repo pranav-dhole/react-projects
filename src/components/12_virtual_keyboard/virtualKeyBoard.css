@@ -6,7 +6,6 @@
   margin: 0 auto;
   margin-top: 30px;
   box-sizing: border-box;
-  justify-content: center;
 }
 
 .input-text {
@@ -19,23 +18,28 @@
 }
 
 .row .mykey {
-  padding: 26px;
+  padding: 30px;
   background-color: black;
   font-size: 24px;
   border-radius: 8px;
   color: white;
   cursor: pointer;
   transition: transform 0.1s ease-in-out;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-keyboard {
-  padding: 12px;
+  padding: 16px;
   border-radius: 6px;
   background-color: gray;
+  width: fit-content;
 }
 
 .row .mykey:hover {
-  transform: scale(105%);
+  transform: scale(102%);
 }
 
 .mykey img {
@@ -47,6 +51,43 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 10px;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.space-key,
+.shift-key,
+.backspace-key,
+.enter-key {
+  flex-grow: 1;
+}
+
+.screen-warning {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .row .mykey {
+    padding: 16px;
+    font-size: 20px;
+  }
+
+  .row {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 720px) {
+  .main-keyboard {
+    display: none;
+  }
+
+  .screen-warning {
+    display: block;
+  }
 }
