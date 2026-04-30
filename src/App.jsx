@@ -10,6 +10,7 @@ import BmiCalculator from "./components/09_bmi_calculator/BmiCalculator";
 import DomainNameGen from "./components/10_domain_name_generator/DomainNameGen";
 import FoodRecipe from "./components/11_food_recipe/FoodRecipe";
 import VirtualKeyBoard from "./components/12_virtual_keyboard/VirtualKeyBoard";
+import QrcodeGenerator from "./components/13_qrcode_generator/QrcodeGenerator";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
       {/* <BmiCalculator /> */}
       {/* <DomainNameGen /> */}
       {/* <FoodRecipe /> */}
-      <VirtualKeyBoard />
+      {/* <VirtualKeyBoard /> */}
+      <QrcodeGenerator />
     </>
   );
 }
