@@ -1,0 +1,42 @@
+.qrcode-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-block: 26px;
+  text-align: center;
+}
+
+.preferences-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-block: 12px;
+  user-select: none;
+}
+
+.text-container {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.text-container input {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 6px;
+  border: 1px gray solid;
+}
+
+.text-container button {
+  border-radius: 6px;
+  border: 1px gray solid;
+  cursor: pointer;
+}
+
+.text-container button:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.qrcode-img {
+  margin-block: 40px;
+}
